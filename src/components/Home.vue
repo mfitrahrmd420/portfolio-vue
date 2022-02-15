@@ -1,19 +1,32 @@
 <template>
   <div ref="home">
-    <section id="home" class="flex flex-col transition-opacity duration-1000 justify-center min-h-screen text-white px-5 lg:px-40 space-y-5">
+    <section
+      id="home"
+      class="flex flex-col transition-opacity duration-1000 justify-center min-h-screen text-white px-5 lg:px-40 space-y-5"
+    >
       <h3 class="text-lg lg:text-2xl text-accent-1">Hi there, my name is</h3>
       <h1 class="text-4xl lg:text-6xl text-gray-100">Rama.</h1>
       <h1 class="text-4xl lg:text-6xl text-gray-400">I developed website</h1>
       <p class="text-gray-600 lg:w-1/2">I love creating things that live on internet, especially creating website</p>
     </section>
 
-    <section id="about" class="flex flex-col transition-opacity duration-1000 justify-center min-h-screen px-5 lg:px-48 space-y-8 bg-primary-700">
+    <section
+      id="about"
+      class="flex flex-col transition-opacity duration-1000 justify-center min-h-screen px-5 lg:px-48 space-y-8 bg-primary-700"
+    >
       <h1 class="text-6xl">More About Me</h1>
       <div class="">
         <div class="text-base space-y-3 lg:mx-20">
           <div>
-            <div class="float-left w-32 h-32 mr-3" style="box-shadow: 5px 5px 0 0 #08ffc8">
-              <img class="w-full h-full object-cover" src="@/assets/Me.jpg" alt="" />
+            <div
+              class="float-left w-32 h-32 mr-3"
+              style="box-shadow: 5px 5px 0 0 #08ffc8"
+            >
+              <img
+                class="w-full h-full object-cover"
+                src="@/assets/Me.jpg"
+                alt=""
+              />
             </div>
             <p>
               My name is M Fitrah Ramadhan, i am a fresh graduate with a degree in Computer Engineering. I pursued that field of education because I’ve always been interested in computer stuff. More importantly, I have been very much
@@ -35,58 +48,77 @@
       </div>
     </section>
 
-    <section id="project" class="flex flex-col transition-opacity duration-1000 min-h-screen px-8 sm:px-16 md:px-20 lg:px-24 bg-primary-500">
+    <section
+      id="project"
+      class="flex flex-col transition-opacity duration-1000 min-h-screen px-8 sm:px-16 md:px-20 lg:px-24 bg-primary-500"
+    >
       <h1 class="text-2xl my-4 sm:text-3xl md:text-6xl text-center md:my-8">Some Things I've Built</h1>
-      <div class="grid grid-cols-4">
-        <div class="col-start-1 col-span-4 flex flex-col items-center lg:col-start-3 lg:col-span-2 relative group">
-          <a href="https://fierce-temple-02414.herokuapp.com/" target="_">
-            <img class="relative border border-gray-900 shadow-lg" src="@/assets/VueSpotify.png" alt="" />
-          </a>
-          <div class="col-start-1 lg:absolute lg:top-1/2 lg:left-0 lg:transform lg:-translate-y-1/2 lg:-translate-x-1/2 p-3 rounded-md shadow-md max-w-sm bg-accent-1 text-gray-900 group-hover:bg-gray-300 transition-colors duration-200">
-            Spotify web app where you can manage your spotify library like add or remove playlist, save tracks, albums and more.
-          </div>
-          <ul class="flex my-3 space-x-3">
-            <li>Vue.js</li>
-            <li>Vuetify</li>
-            <li>Spotify API</li>
-            <li>Heroku</li>
-          </ul>
-        </div>
-      </div>
+      <ProjectWrapper
+        left
+        to="https://fierce-temple-02414.herokuapp.com/"
+        description="Spotify web app where you can manage your spotify library like add or remove playlist, save tracks, albums and more."
+        :techstack="['VueJS', 'Vuetify', 'Spotify API', 'Heroku']"
+      >
+        <template #image>
+          <img
+            src="@/assets/VueSpotify.png"
+            class="relative border border-gray-900 shadow-lg"
+          />
+        </template>
+      </ProjectWrapper>
+      <ProjectWrapper
+        right
+        to="https://frozen-fjord-63502.herokuapp.com/"
+        description="Simple Blog website with butter cms"
+        :techstack="['NuxtJS', 'Butter CMS', 'Tailwind CSS']"
+      >
+        <template #image>
+          <img
+            src="@/assets/NuxtBlog.png"
+            class="relative border border-gray-900 shadow-lg"
+          />
+        </template>
+      </ProjectWrapper>
     </section>
 
-    <section id="design" class="flex flex-col transition-opacity duration-1000 justify-center min-h-screen px-5 lg:px-48 space-y-8 bg-primary-700">
+    <section
+      id="design"
+      class="flex flex-col transition-opacity duration-1000 justify-center min-h-screen px-5 lg:px-48 space-y-8 bg-primary-700"
+    >
       <div class="flex flex-col lg:grid grid-cols-6 gap-3">
         <div
           v-for="(col, i) in cols"
           :key="i"
           :class="col.size"
-          class="rounded-sm group bg-primary-400 cursor-pointer transform hover:scale-105 hover:shadow-2xl transition-all duration-200 relative overflow-hidden"
+          class="rounded-sm group bg-primary-400 cursor-pointer hover:shadow-2xl transition-all duration-200 relative overflow-hidden"
           style="max-height: 300px"
         >
-          <img class="w-full h-full object-cover" :src="col.image" alt="" />
-          <div class="space-y-3 p-3 absolute top-0 left-0 bg-gray-200 text-black opacity-0 w-full h-full group-hover:opacity-100 transition-opacity duration-300">
-            <h1 class="text-xl font-semibold">Lorem ipsum dolor sit amet.</h1>
-            <p class="text-two-line">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus laudantium dolor blanditiis tempore in voluptatem suscipit reiciendis libero placeat facilis.</p>
-            <ul class="flex space-x-3 text-xs">
-              <li>• Python</li>
-              <li>• Django</li>
-              <li>• Framework</li>
-            </ul>
-          </div>
+          <img
+            class="w-full h-full object-cover"
+            :src="col.image"
+            alt=""
+          />
+
         </div>
       </div>
     </section>
 
-    <section id="contact" class="flex flex-col justify-center min-h-screen text-center bg-primary-500">
+    <section
+      id="contact"
+      class="flex flex-col justify-center min-h-screen text-center bg-primary-500"
+    >
       <h1 class="text-2xl my-4 sm:text-3xl md:text-6xl text-center md:my-8">Get in Touch</h1>
       <p class="text-lg">I'm currently looking for opportunities to work together</p>
-      <a href="mailto:tgcfitrah26@gmail.com" class="self-center px-4 py-2 my-3 rounded-md bg-accent-1 text-black hover:bg-gray-500 transition-colors duration-200">Mail Me</a>
+      <a
+        href="mailto:tgcfitrah26@gmail.com"
+        class="self-center px-4 py-2 my-3 rounded-md bg-accent-1 text-black hover:bg-gray-500 transition-colors duration-200"
+      >Mail Me</a>
     </section>
   </div>
 </template>
 
 <script>
+import ProjectWrapper from "@/components/ProjectWrapper.vue";
 export default {
   data() {
     return {
@@ -114,7 +146,9 @@ export default {
       ],
     };
   },
-  methods: {},
+  components: {
+    ProjectWrapper,
+  },
   mounted() {
     const sections = this.$refs.home.childNodes;
     const ob = new IntersectionObserver(
